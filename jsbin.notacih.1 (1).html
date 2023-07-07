@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2023 by khzs24 (http://jsbin.com/notacih/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+* { margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+}
+
+#clock {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 70px;
+  margin-top: -35px;
+}
+
+#clock2 {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 70px;
+  margin-top: -35px;
+}
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+
+function generateRgbString(red, green, blue) {
+  return "rgb(" + red + ", " + green + ", " + blue + ")";
+}
+
+function colorClock(){
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+  // Formázás, hogy mindig két számjegyű legyen az idő
+  if (hours < 10) {
+   hours = '0' + hours;
+  }
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+
+  // Az idő megjelenítése a konzolon vagy egy HTML elemen keresztül
+  var clockFace = hours + ':' + minutes + ':' +seconds;
+  //var hexColor = '#' + hours + minutes + seconds;
+  var hexColor = generateRgbString(hours+100, minutes+100, seconds)
+  
+  document.getElementById('clock').innerHTML = clockFace;
+  document.body.style.background = hexColor;
+  
+  // Az idő megjelenítése minden másodpercben
+  setTimeout(function() {
+  colorClock();
+  }, 1000);
+  
+}
+
+colorClock();
+
+
+
+</script>
+</body>
+</html>
